@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Welcome to Book Tracker</h1>
+<h2>Recently Added Books</h2>
+<ul class="book-list">
+    {% for book in books %}
+    <li>
+        <a href="/book/{{ book.id }}">
+            {{ book.title }} by {{ book.author }} ({{ book.status }})
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

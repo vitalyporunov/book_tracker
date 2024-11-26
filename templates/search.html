@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Search Books</h1>
+<form method="POST">
+    <input type="text" name="query" placeholder="Search by title or author" value="{{ query }}" required>
+    <button type="submit">Search</button>
+</form>
+<ul class="book-list">
+    {% for book in books %}
+    <li>
+        <a href="/book/{{ book.id }}">{{ book.title }}</a> by {{ book.author }}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

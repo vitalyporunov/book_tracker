@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>All Books</h1>
+<form method="GET" action="/books">
+    <label for="genre">Filter by Genre:</label>
+    <select name="genre" id="genre">
+        <option value="">All</option>
+        <option value="Fiction" {% if genre_filter == 'Fiction' %}selected{% endif %}>Fiction</option>
+        <option value="Non-Fiction" {% if genre_filter == 'Non-Fiction' %}selected{% endif %}>Non-Fiction</option>
+        <option value="Fantasy" {% if genre_filter == 'Fantasy' %}selected{% endif %}>Fantasy</option>
+    </select>
+    <button type="submit">Filter</button>
+</form>
+<ul class="book-list">
+    {% for book in books %}
+    <li>
+        <a href="/book/{{ book.id }}">{{ book.title }}</a> by {{ book.author }} ({{ book.status }})
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
